@@ -1,5 +1,6 @@
 :root{
     --primary-color-clear:rgba(108,99,255,1);
-    --gray-color-clear: #5a5a5a;
-
+    --tertiary-color-clear: #5a5a5a;
+    --quaternary-color-clear: black;
+    --quinary-color-clear: white;
 }
