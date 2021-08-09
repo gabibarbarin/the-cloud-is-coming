@@ -1,0 +1,66 @@
+.searcher-city-container{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-grow: 4;
+    background: linear-gradient(180deg, var(--primary-color-clear) 55%, rgba(255,255,255,1) 100%);
+    padding-top: 1.5rem;
+}
+
+.searcher-city-container form{
+    min-width: 85%;
+    text-align: center;
+}
+
+.searcher-city-container input{
+    width: 85%;
+    padding: 1rem;
+    border-radius: 9px;
+    border: none;
+    box-shadow:  5px 5px 15px var(--gray-color-clear);
+    background: linear-gradient(145deg, #f0f0f0, #cacaca);
+    outline: none;
+    font-size: .8rem;
+}
+
+.information-web-container{
+    flex-grow: 3;
+}
+
+.information-web-container img{
+    width: 100%;
+}
+
+.info-container{
+    text-align: center;
+    color: var(--primary-color-clear);
+}
+
+.title{
+    font-size: 1.5rem;
+    margin: 1rem 0 0 0;
+}
+
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+@media only screen and (min-width: 768px) {
+    .information-web-container{
+        align-items: center;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .information-web-container{
+        flex-direction: row;
+    }
+    .info-container{
+        text-align: left;
+    }
+    .title{
+        margin: 0;
+    }
+}
