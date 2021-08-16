@@ -1,0 +1,137 @@
+.container-info-climate{
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container-info-climate > div:first-child{
+    align-items: center;
+}
+
+.thermometric-unit{
+    margin-top: .5rem;
+}
+
+#container-input-range{
+    width: 90%;
+    margin: 1rem auto;
+}
+
+#container-input-range input{
+    display: block;
+    width: 100%;
+
+    -webkit-appearance: none;
+    background-color: transparent;
+}
+
+#container-input-range input:focus, #container-input-range input:focus::-webkit-slider-runnable-track{
+    outline: none;
+}
+ 
+#container-input-range input,
+#container-input-range input::-webkit-slider-runnable-track,
+#container-input-range input::-webkit-slider-thumb{
+    -webkit-appearance: none;
+}
+  
+#container-input-range input::-webkit-slider-thumb{
+    background-color: var(--quinary-color-clear);
+
+    width: 1rem;
+    height: 1rem;
+    margin-top: -.4rem;
+
+    border: none;
+    border-radius: 50%;
+}
+  
+#container-input-range input::-moz-range-thumb, #container-input-range input::-ms-thumb{
+    background-color: var(--quinary-color-clear);
+
+    width: 1rem;
+    height: 1rem;
+
+    border: none;
+    border-radius: 50%;
+}
+ 
+#container-input-range input::-webkit-slider-runnable-track{
+    background-color: var(--tertiary-color-clear);
+
+    height: 3px;
+}
+
+#container-input-range input::-moz-range-track{
+    background-color: var(--tertiary-color-clear);
+
+    height: 3px;
+}
+
+#container-input-range input::-ms-track {
+    background-color: var(--tertiary-color-clear);
+
+    height: 3px;
+}
+
+.future-climate-container{
+    justify-content: space-between;
+
+    margin-top: 2.5rem;
+
+    overflow-x: scroll;
+}
+
+.future-climate-container::-webkit-scrollbar {
+    display: none;
+}
+
+.inner-container-fc{
+    align-items: center;
+
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 1px 1px var(--tertiary-color-clear);
+
+    background-color: #78909c;
+
+    margin: .3rem;
+}
+
+.future-icon{
+    width: 4rem;
+}
+
+.future-day{
+    background-color: #4f5b62;
+
+    width: 100%;
+
+    text-align: center;
+
+    border-radius: 5px 5px 0 0;
+}
+
+@media only screen and (min-width: 768px) {
+    .current-climate{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .container-info-climate{
+        order: 1;
+    }
+
+    .city-container{
+        order: 2;
+        justify-content: center;
+    }
+
+    #container-input-range{
+        order: 3;
+    }
+
+    .weather-conditions{
+        margin-left: .8rem;
+    }
+}

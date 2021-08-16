@@ -2,13 +2,17 @@ html, body{
     margin: 0;
     box-sizing: border-box;
     min-height: 100vh;
+
     font-family: 'Roboto', sans-serif, Verdana, Geneva, Tahoma;
 }
 
 .container{
-    max-width: 2560px;
     overflow: hidden;
+    max-width: 2560px;
     min-height: 100vh;
+
+    background-color: #333333;
+    color: white;
 }
 
 .flex-column{
@@ -22,10 +26,40 @@ html, body{
 }
 
 footer{
-    background-color: var(--quaternary-color-clear);
+    background-color: #1f1f1f;
+
+    font-size: .8rem;
     color: var(--quinary-color-clear);
     text-align: center;
-    padding: 1rem .8rem;
+    padding: 1rem .8rem;  
+
+    box-sizing: border-box;
+    width: 100%;
+
+    position: absolute;
+    bottom: 0;
+}
+
+.small-letter{
+    font-size: .8rem;
+    font-weight: 200;
+}
+
+.medium-letter{
+    font-size: 1.2rem;
+}
+
+.large-letter{
+    font-size: 3.1rem;
+}
+
+.margin-tb-rem{
+    margin: 1rem 0;
+}
+
+.margin-lr-rem{
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
 
 @media only screen and (min-width: 1024px) {

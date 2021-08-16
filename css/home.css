@@ -3,23 +3,29 @@
     justify-content: center;
     align-items: flex-start;
     flex-grow: 4;
-    background: linear-gradient(180deg, var(--primary-color-clear) 55%, rgba(255,255,255,1) 100%);
+
+    background: linear-gradient(180deg, var(--primary-color-clear) 55%, var(--quinary-color-clear) 100%);
+    
     padding-top: 1.5rem;
 }
 
-.searcher-city-container form{
+#search-form{
     min-width: 85%;
+
     text-align: center;
 }
 
-.searcher-city-container input{
+#search-input{
     width: 85%;
+
     padding: 1rem;
+
     border-radius: 9px;
     border: none;
-    box-shadow:  5px 5px 15px var(--gray-color-clear);
+
     background: linear-gradient(145deg, #f0f0f0, #cacaca);
     outline: none;
+
     font-size: .8rem;
 }
 
@@ -38,11 +44,13 @@
 
 .title{
     font-size: 1.5rem;
+
     margin: 1rem 0 0 0;
 }
 
 ul{
     list-style-type: none;
+    
     margin: 0;
     padding: 0;
 }
