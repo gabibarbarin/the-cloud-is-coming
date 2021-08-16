@@ -1,3 +1,3 @@
-import {eventSearchForm} from './modules.js'
+import { eventSearchForm } from "./modules.js";
 
 eventSearchForm()

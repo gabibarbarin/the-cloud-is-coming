@@ -3,7 +3,10 @@ export const eventSearchForm = () =>{
 
     searchForm.addEventListener('submit', (e) => {
         e.preventDefault()
-        getCityInfo()
+
+        //window.open("https://www.argar.cat", "Diseño Web", "width=300, height=200")
+        window.location.pathname == '/index.html' ? (window.open("../views/forecast.html"),getCityInfo()) : getCityInfo()
+        //console.log(window.location.pathname) 
     })
 }
 
@@ -19,9 +22,9 @@ export const getCityInfo = () => {
     fetch(`http://api.positionstack.com/v1/forward?access_key=${params.access_key}&query=${params.query}`)
     .then(response => response.json())
     .then(data => {
-        console.log(data.data[0].latitude)
-        console.log(data.data[0].longitude)
-        console.log(data.data[0].name)
-        console.log(data.data[0].region)
+        localStorage.setItem('lat', data.data[0].latitude);
+        localStorage.setItem('lon', data.data[0].longitude);
+        localStorage.setItem('city', data.data[0].name);
+        localStorage.setItem('province', data.data[0].region);
     });
 }
