@@ -1,3 +1,6 @@
+import { transformHours, transformWeekday } from "./auxFunctions.js"
+/* Funcion encargada de realizar Geocoding de la ciudad ingresada por el usuario */
+            /* Ademas guarda el nombre de la ciudad y la provincia */
 export const getCityInfo = async () => {
     return new Promise((resolve) => {
         const city = document.querySelector('#search-input').value
@@ -20,7 +23,9 @@ export const getCityInfo = async () => {
     })
 }
 
-export const getWeatherData = (lat, lon) =>{
+/* Funcion encargada de obtener datos climaticos dada una hora y crear el Array con*/
+                /*  los objetos HTML donde se renderizaran esos datos */
+export const getHourlyWeatherData = (lat, lon, h) =>{
     return new Promise((resolve)=>{        
         const params = {
             access_key: '4c72c6754e67da7ee09dff08dd713e81',
@@ -35,18 +40,42 @@ export const getWeatherData = (lat, lon) =>{
             .then(response => response.json())
             .then(data => {
                 /* Datos del clima actual */
-                console.log(data.hourly[0])
-
-                console.log(data.hourly[0].weather[0].icon)  
-                console.log(data.hourly[0].weather[0].description)
-                console.log(data.hourly[0].dt)  
-                console.log(data.hourly[0].temp)  
-                console.log(data.hourly[0].humidity)  
-                console.log(data.hourly[0].wind_speed)  
-                console.log(data.hourly[0].pop)   
-            })
+                let val = [
+                    data.hourly[h].weather[0].icon,
+                    data.hourly[h].weather[0].description,
+                    transformWeekday(data.hourly[h].dt),
+                    transformHours(data.hourly[h].dt),
+                    Math.trunc(data.hourly[h].temp),
+                    data.hourly[h].humidity,
+                    Math.trunc(data.hourly[h].wind_speed),
+                    data.hourly[h].pop,
+                ]
+                /* Objetos HTML donde se renderizan los datos */
+                let obj = [
+                    document.querySelector('#currentIcon'),
+                    document.querySelector('#currentDescription'),
+                    document.querySelector('#currentWeekday'),
+                    document.querySelector('#currentTime'),
+                    document.querySelector('#currentTemp'),
+                    document.querySelector('#currentHumidity'),
+                    document.querySelector('#currentWind'),
+                    document.querySelector('#currentPop'),
+                ]
+                /* Llamada a la funcion encargada de renderizar */                
+                renderHourlyData(val, obj)
+            })      
         )
     })
+}
+
+export const renderHourlyData = (val, obj) =>{
+    obj.forEach((element,i) => {
+        if(element.getAttribute('alt') == 'Weather icons'){
+            element.setAttribute('src', `http://openweathermap.org/img/wn/${val[i]}@2x.png`)
+        }else{
+            element.innerHTML = `${val[i]}`
+        }
+    })   
 }
 
 export const eventSearchForm = () =>{
@@ -66,7 +95,7 @@ export const eventSearchForm = () =>{
         }else{
             try{
                 await getCityInfo()
-                await getWeatherData(localStorage.getItem('lat'),localStorage.getItem('lon'))
+                await getHourlyWeatherData(localStorage.getItem('lat'),localStorage.getItem('lon'), 0)
             }catch(error){
                 console.log(error)
             }

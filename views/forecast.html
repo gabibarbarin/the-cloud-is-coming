@@ -24,20 +24,30 @@
         <div class="current-climate">
             <div class="flex-column margin-lr-rem city-container">
                 <span class="medium-letter">Ciudad, Provincia</span>
-                <span class="small-letter">Sab, 15:00, Nublado</span>
+                <div class="small-letter">
+                    <span id="currentWeekday">Sab</span>, 
+                    <span id="currentTime">15:00</span>, 
+                    <span id="currentDescription">Nublado</span>
+                </div>
             </div>
 
             <div class="flex-row container-info-climate">
                 <div class="flex-row">
-                    <img src="http://openweathermap.org/img/wn/04d@2x.png" alt="Weather icons">
+                    <img id="currentIcon" src="http://openweathermap.org/img/wn/04d@2x.png" alt="Weather icons">
                     <div class="flex-row">
-                        <span class="large-letter">9</span><span class="small-letter thermometric-unit">°C|°F</span>
+                        <span id="currentTemp" class="large-letter">9</span><span class="small-letter thermometric-unit">°C|°F</span>
                     </div>
                 </div>
-                <div class="flex-column weather-conditions">
-                    <span class="small-letter">Precip: 4%</span>
-                    <span class="small-letter">Humedad: 65%</span>
-                    <span class="small-letter">Viento: a 65 km/h</span>
+                <div class="flex-column weather-conditions small-letter">
+                    <div>
+                        Precip: <span class="small-letter" id="currentPop">4</span>%
+                    </div>
+                    <div>
+                        Humedad: <span class="small-letter" id="currentHumidity">65</span>%
+                    </div>
+                    <div>
+                        Viento: a <span class="small-letter" id="currentWind">65</span> km/h
+                    </div>
                 </div>
             </div>
             
