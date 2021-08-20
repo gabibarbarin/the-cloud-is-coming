@@ -20,6 +20,35 @@ export const getCityInfo = async () => {
     })
 }
 
+export const getWeatherData = (lat, lon) =>{
+    return new Promise((resolve)=>{        
+        const params = {
+            access_key: '4c72c6754e67da7ee09dff08dd713e81',
+            lat: `${lat}`,
+            lon: `${lon}`,
+            exclude: 'alerts,minutely,current',
+            lang: 'es',
+            units: 'metric'
+        }
+        resolve(
+            fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${params.lat}&lon=${params.lon}&exclude=${params.exclude}&appid=${params.access_key}&units=${params.units}&lang=${params.lang}`)
+            .then(response => response.json())
+            .then(data => {
+                /* Datos del clima actual */
+                console.log(data.hourly[0])
+
+                console.log(data.hourly[0].weather[0].icon)  
+                console.log(data.hourly[0].weather[0].description)
+                console.log(data.hourly[0].dt)  
+                console.log(data.hourly[0].temp)  
+                console.log(data.hourly[0].humidity)  
+                console.log(data.hourly[0].wind_speed)  
+                console.log(data.hourly[0].pop)   
+            })
+        )
+    })
+}
+
 export const eventSearchForm = () =>{
     const searchForm = document.querySelector('#search-form')
 
@@ -35,7 +64,12 @@ export const eventSearchForm = () =>{
             }
             
         }else{
-            getCityInfo()
+            try{
+                await getCityInfo()
+                await getWeatherData(localStorage.getItem('lat'),localStorage.getItem('lon'))
+            }catch(error){
+                console.log(error)
+            }
         }
     })
 }
