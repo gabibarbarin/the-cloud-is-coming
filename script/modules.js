@@ -1,4 +1,4 @@
-import { getCityInfo, getHourlyWeatherData } from "./forecast/modules.js"
+import { getCityInfo, getWeatherData } from "./forecast/modules.js"
 
 export const eventSearchForm = () =>{
     const searchForm = document.querySelector('#search-form')
@@ -17,7 +17,7 @@ export const eventSearchForm = () =>{
         }else{
             try{
                 await getCityInfo()
-                await getHourlyWeatherData(localStorage.getItem('lat'),localStorage.getItem('lon'), 0)
+                await getWeatherData(localStorage.getItem('lat'),localStorage.getItem('lon'), 0)
             }catch(error){
                 console.log(error)
             }

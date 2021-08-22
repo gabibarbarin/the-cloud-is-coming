@@ -9,14 +9,19 @@ export const transformWeekday = (date) =>{
     return(Weekday[auxDate.getDay()])
 }
 
-export const saveData = (data) => {
+export const saveData = (cData, dData) => {
     const currentHour = new Date()
     const auxCant = 24 - currentHour.getHours()
 
-    let arrayAux = []
+    let currentData = []
+    let dailyData = []
 
     for(let i=0; i <= auxCant; i++)
-        arrayAux.push(data[i])
+        currentData.push(cData[i])
 
-    localStorage.setItem('data', JSON.stringify(arrayAux))
+    for(let i=1; i <= 7; i++)
+        dailyData.push(dData[i])
+
+    localStorage.setItem('currentData', JSON.stringify(currentData))
+    localStorage.setItem('dailyData', JSON.stringify(dailyData))
 }
